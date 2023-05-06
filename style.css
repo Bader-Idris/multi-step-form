@@ -1,0 +1,573 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: "Ubuntu";
+}
+:root {
+  /* Colors */
+  /* Primary */
+  --Marine-blue: hsl(213, 96%, 18%);
+  --Purplish-blue: hsl(243, 100%, 62%);
+  --Pastel-blue: hsl(228, 100%, 84%);
+  --Light-blue: hsl(206, 94%, 87%);
+  --Strawberry-red: hsl(354, 84%, 57%);
+  /* Neutral */
+  --Cool-gray: hsl(231, 11%, 63%);
+  --Light-gray: hsl(229, 24%, 87%);
+  --Magnolia: hsl(217, 100%, 97%);
+  --Alabaster: hsl(231, 100%, 99%);
+  --White: hsl(0, 0%, 100%);
+  /* font-size */
+  --main-font:16px;
+  /* try another approach of adding 'em in this project */
+  --Family: [Ubuntu](https://fonts.google.com/specimen/Ubuntu);
+  --Weights: 400, 500, 700;
+}
+/*
+  in real life project these sizes are crazily big, so minify them using:
+  WOFF Converter, or WOFF2, they're good in compatibility,
+  and you can use both making v1 as a spare if 2nd -v falls
+  src: url("blab"),
+        url("blab2");
+*/
+@font-face {
+  font-family: "Ubuntu";
+  font-weight: 400;
+  src: url("assets/fonts/Ubuntu-Regular.ttf");
+}
+@font-face {
+  font-family: "Ubuntu";
+  src: url("assets/fonts/Ubuntu-Medium.ttf");
+  font-weight: 500;
+}
+@font-face {
+  font-family: "Ubuntu";
+  src: url("assets/fonts/Ubuntu-Bold.ttf");
+  font-weight: 700;
+}
+body {
+  background-color: #eef5ff;
+}
+@media (max-width:767px) {
+  main {
+    flex-direction: column;
+    width: 90%;
+    margin: 155px auto;
+    top: -50px;
+    position: relative;
+  }
+  main section {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+  }
+  aside {
+    background-image: url("assets/images/bg-sidebar-mobile.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 172px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: -1;
+  }
+  aside > div {
+    height: 172px;
+  }
+  aside div > p {
+    display: none;
+  }
+}
+@media (min-width:768px) {
+  main {
+    width: 830px;
+    margin: 10% auto;
+  }
+  main section {
+    width: calc(100% - 250px);
+  }
+  aside {
+    background-image: url("assets/images/bg-sidebar-desktop.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    max-height: 568px;
+    width: 260px;
+  }
+}
+main section  {
+  position: relative;
+  transition: all 1s ease-in-out 0s;
+}
+@media (max-width:767px) {
+  aside div {
+    top: -25px;
+    transform: translateY(-50%);
+    margin: 20px 0px 0 50px;
+    position: relative;
+    left: -40px;
+  }
+}
+@media (min-width:768px) {
+  aside div {
+    margin: 20px;
+    margin-left: 25px;
+    position: relative;
+  }
+  aside .step1 {
+    margin-top: 30px;
+  }
+}
+
+aside div span {
+  border-radius: 50%;
+  border: 1px solid var(--Alabaster);
+  padding: 5px 10px;
+  color: var(--White);
+  background-color: transparent;
+  font-weight: bold;
+  position: absolute;
+  bottom: 3px;
+}
+aside div span.active {
+  background-color: var(--Light-blue);
+  color: var(--Marine-blue);
+  border-color: var(--Light-blue);
+}
+aside div p:first-of-type {
+  margin-left: 50px;
+  color: var(--Cool-gray);
+}
+aside div p:last-of-type {
+  margin-left: 50px;
+  color: var(--White);
+  font-weight: bold;
+}
+main {
+  display: flex;
+  height: 540px;
+  background-color: var(--White);
+  padding: 15px;
+  border-radius: 20px;
+  overflow: hidden;
+}
+main form {
+  position: relative;
+  width: 75%;
+  margin: 0 auto;
+}
+@media (max-width:767px) {
+  main form {
+    min-width: 100%;
+    height: 57vh;
+    padding: 10px 20px 10px;
+  }
+  form .button-container {
+    position: absolute;
+    bottom: 0;
+    height: 50px;
+    width: 90%;
+    background-color: var(--White);
+  }
+}
+@media (min-width:768px) {
+  main form {
+    height: 100%;
+    padding: 20px;
+  }
+}
+form > h1,
+form > h2 {
+  font-size: 26px;
+  color: var(--Marine-blue);
+  margin: 10px 0;
+}
+form > p {
+  color: var(--Cool-gray);
+}
+form button {
+  cursor: pointer;
+}
+form button.back,
+form button.next {
+  width: 95px;
+  border: transparent;
+  padding: 10px;
+  font-size: 15px;
+  bottom: 25px;
+  position: absolute;
+}
+form button.back {
+  color: var(--Cool-gray);
+  background-color: transparent;
+  left: 20px;
+  font-weight: bold;
+}
+form button.back:hover {
+  color: var(--Marine-blue);
+}
+form button.next {
+  color: var(--Alabaster);
+  background-color: var(--Marine-blue);
+  border-radius: 4px;
+  right: 20px;
+}
+form button.next:hover {
+  opacity: 0.7;
+}
+form button.confirm {
+  background-color: var(--Purplish-blue);
+}
+form button.confirm:hover {
+  background-color: var(--Pastel-blue);
+}
+main .first {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+}
+main form input {
+  padding: 10px;
+  outline: none;
+  border-radius: 4px;
+  border: 1px solid var(--Light-gray);
+  width: 100%;
+  font-weight: 500;
+}
+main form input:focus {
+  outline:2px solid var(--Purplish-blue);
+}
+
+main form input.invalid {
+  border: 1px solid var(--Strawberry-red);
+}
+.first div {
+  color: var(--Marine-blue);
+  font-size: 14px;
+  position: relative;
+}
+.first > div:first-of-type {
+  margin-top: 20px;
+}
+.first div .error {
+  position: absolute;
+  bottom: 36px;
+  right: 10px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--Strawberry-red);
+}
+.first div div {
+  margin: 20px 0 5px 0;
+}
+main .first ::placeholder {
+  font-weight: bold;
+  color: var(--Cool-gray);
+}
+main .second .mini-plans {
+  display: flex;
+  height: 250px;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+}
+.second .mini-plans div {
+  border: 1px solid var(--Pastel-blue);
+  border-radius: 4px;
+  padding: 10px;
+  background-color: var(--White);
+  cursor: pointer;
+  user-select: none;
+}
+@media (max-width:767px) {
+  main .second .mini-plans {
+    flex-direction: column;
+    margin: 20px 0;
+  }
+  .second .mini-plans div {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    position: relative;
+    align-items: center;
+  }
+  .second .mini-plans div :not(:first-child) {
+    align-self: center;
+  }
+  .second .mini-plans div :nth-child(2) {
+    align-self: flex-start;
+    margin-left: 10px;
+    position: relative;
+  }
+  .second .mini-plans div :nth-child(3) {
+    align-self: flex-end;
+    margin-left: 50px;
+    position: absolute;
+  }
+  .second .mini-plans div :nth-child(4) {
+    position: absolute;
+    font-weight: 500;
+    font-size: 16px;
+    text-transform: capitalize;
+    right: 20px;
+  }
+}
+@media (min-width:768px) {
+  .mini-plans img {
+    margin: 0 40px 40px 0;
+  }
+}
+.mini-plans div h3 {
+  color: var(--Marine-blue);
+  font-size: 18px;
+  font-weight: 500;
+}
+.mini-plans div p {
+  color: var(--Cool-gray);
+}
+.mini-plans div span {
+  font-size: 12px;
+  color: var(--Marine-blue);
+  font-weight: 500;
+  display: block;
+  margin: 5px 0px;
+}
+.second .mini-plans div.active {
+  background-color: var(--Magnolia);
+}
+.second .plan-either {
+  background-color: var(--Magnolia);
+  padding: 15px;
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  border-radius: 5px;
+}
+.second .plan-either span:first-of-type,
+.second .plan-either span:last-of-type {
+  color: var(--Cool-gray);
+  transition: .5s;
+  font-weight: 500;
+}
+.second .plan-either span:first-of-type.active,
+.second .plan-either span:last-of-type.active {
+  color: var(--Marine-blue);
+}
+.second .plan-either span:nth-of-type(2) {
+  background-color: var(--Marine-blue);
+  width: 40px;
+  height: 20px;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  position: absolute;
+  border-radius: 20px;
+  left: calc(50%);
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+}
+.plan-either span:nth-of-type(2):before {
+  content: '';
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: var(--Alabaster);
+  position: absolute;
+  top: 10%;
+  left: 8%;
+  transition: .3s;
+}
+.plan-either span.active:nth-of-type(2):before {
+  left: 55%;
+  transform: scaleX(-100%);
+}
+main .third .check-container {
+  padding: 10px;
+  margin: 15px 0;
+  border-radius: 4px;
+  border: 1px solid var(--Pastel-blue);
+  position: relative;
+  user-select: none;
+}
+main .third .check-container.active {
+  background-color: var(--Magnolia);
+}
+@media (max-width:767px) {
+  main .third .check-container .text {
+    margin-left: 30px;
+  }
+}
+@media (min-width:768px) {
+  main .third .check-container:first-of-type {
+    margin-top: 40px;
+  }
+  main .third label {
+    left: 20px;
+  }
+  main .third .check-container .text {
+    margin-left: 50px;
+  }
+}
+
+main .third .check-container .text {
+  padding: 10px 20px 10px 0;
+}
+main .third label {
+  top: 50%;
+  transform: translateY(-50%);
+  position: absolute;
+}
+main .third input[type="checkbox"] {
+  display: none;
+}
+main .third input[type="checkbox"] + label::before {
+  content: "";
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+main .third input[type="checkbox"]:checked + label::before {
+  content: '✓';
+  text-align: center;
+  background-color: var(--Purplish-blue);
+  border-color: var(--Purplish-blue);
+  color: white;
+  font-weight: bold;
+}
+.check-container h4 {
+  color: var(--Marine-blue);
+}
+.check-container p {
+  color: var(--Cool-gray);
+  font-size: 14px;
+  margin-top: 5px;
+}
+.check-container span {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--Purplish-blue);
+  font-weight: 500;
+}
+@media (max-width:767px) {
+  .check-container span {
+    right: 15px;
+  }
+}
+@media (min-width:768px) {
+  .check-container span {
+    right: 20px;
+  }
+}
+.fourth .summery {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: var(--Magnolia);
+  border-radius: 4px;
+}
+.fourth .summery div {
+  margin: 5px 0;
+  padding: 10px;
+}
+.fourth .summery div:not(.plan-option) {
+  display: none;
+}
+.fourth .summery div:not(.plan-option).active {
+  color: var(--Cool-gray);
+  display: block;
+}
+.fourth .summery div:not(.plan-option) span {
+  position: absolute;
+  right: 45px;
+  color: var(--Marine-blue);
+  font-weight: 500;
+  font-size: 14px;
+}
+.summery .plan-option {
+  position: relative;
+  width: 100%;
+  color: var(--Marine-blue);
+  font-weight: bold;
+}
+.summery .plan-option::before {
+  content: '';
+  position: absolute;
+  border-bottom: 1px solid var(--Light-gray);
+  width: 90%;
+  bottom: 0;
+  left: 5%;
+}
+.summery .plan-option span:last-of-type {
+  position: absolute;
+  right: 20px;
+  bottom: 15px;
+}
+.summery a {
+  display: block;
+  margin: 5px 0;
+  color: var(--Cool-gray);
+  font-weight: 500;
+  transition: 0.3s;
+  width: fit-content;
+}
+.summery a:hover {
+  color: var(--Marine-blue);
+  text-decoration: none;
+}
+main .fourth .total {
+  margin-top: 30px;
+  color: var(--Cool-gray);
+}
+main .fourth .total span:last-child {
+  color: var(--Purplish-blue);
+  right: 30px;
+  position: absolute;
+  font-weight: 500;
+  font-size: 18px;
+}
+main .fifth {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+main .fifth .thank-you {
+  margin-bottom: 30px;
+}
+main .fifth h4 {
+  font-size: 32px;
+  color: var(--Marine-blue);
+  margin: 10px 0;
+}
+main .fifth p {
+  line-height: 1.6;
+}
+footer.attribution {
+  font-size: 11px;
+  margin: 20px auto;
+  position: relative;
+  text-align: center;
+}
+footer.attribution p {
+  width: 100%;
+}
+footer.attribution a {
+  color: hsl(228, 45%, 44%);
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 15px;
+  vertical-align: -2px;
+}
+/* cursor: no-drop; informs user that he's not allowed to do anything with mouse adding 🚫 beside mouse */
