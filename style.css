@@ -53,12 +53,14 @@ body {
   main {
     flex-direction: column;
     width: 90%;
-    margin: 155px auto;
+    margin: 155px auto 0;
     top: -50px;
     position: relative;
-  }
+    height: 70vh;
+}
   main section {
     width: 100%;
+    height: 100%;
     display: flex;
     justify-content: space-between;
     flex-wrap: nowrap;
@@ -88,6 +90,7 @@ body {
   main {
     width: 830px;
     margin: 10% auto;
+    height: 540px;
   }
   main section {
     width: calc(100% - 250px);
@@ -150,7 +153,6 @@ aside div p:last-of-type {
 }
 main {
   display: flex;
-  height: 540px;
   background-color: var(--White);
   padding: 15px;
   border-radius: 20px;
@@ -164,15 +166,13 @@ main form {
 @media (max-width:767px) {
   main form {
     min-width: 100%;
-    height: 57vh;
-    padding: 10px 20px 10px;
+    padding: 10px 15px;
   }
   form .button-container {
     position: absolute;
-    bottom: 0;
+    bottom: -20px;
     height: 50px;
     width: 90%;
-    background-color: var(--White);
   }
 }
 @media (min-width:768px) {
@@ -272,7 +272,6 @@ main .first ::placeholder {
 }
 main .second .mini-plans {
   display: flex;
-  height: 250px;
   justify-content: space-between;
   width: 100%;
   align-items: center;
@@ -284,11 +283,12 @@ main .second .mini-plans {
   background-color: var(--White);
   cursor: pointer;
   user-select: none;
+  margin-bottom: 10px;
 }
 @media (max-width:767px) {
   main .second .mini-plans {
     flex-direction: column;
-    margin: 20px 0;
+    margin-top: 10px;
   }
   .second .mini-plans div {
     width: 100%;
@@ -320,6 +320,9 @@ main .second .mini-plans {
   }
 }
 @media (min-width:768px) {
+  .mini-plans {
+    height: 250px;
+  }
   .mini-plans img {
     margin: 0 40px 40px 0;
   }
@@ -388,8 +391,7 @@ main .second .mini-plans {
   transform: scaleX(-100%);
 }
 main .third .check-container {
-  padding: 10px;
-  margin: 15px 0;
+  margin: 5px 0;
   border-radius: 4px;
   border: 1px solid var(--Pastel-blue);
   position: relative;
@@ -399,11 +401,19 @@ main .third .check-container.active {
   background-color: var(--Magnolia);
 }
 @media (max-width:767px) {
+  main .third .check-container {
+    width: calc(100% + 10px);
+    left: -5px;
+    padding: 5px;
+}
   main .third .check-container .text {
     margin-left: 30px;
   }
 }
 @media (min-width:768px) {
+  main .third .check-container {
+    padding: 10px;
+  }
   main .third .check-container:first-of-type {
     margin-top: 40px;
   }
@@ -414,7 +424,6 @@ main .third .check-container.active {
     margin-left: 50px;
   }
 }
-
 main .third .check-container .text {
   padding: 10px 20px 10px 0;
 }
@@ -443,8 +452,9 @@ main .third input[type="checkbox"]:checked + label::before {
   color: white;
   font-weight: bold;
 }
-.check-container h4 {
+.check-container h3 {
   color: var(--Marine-blue);
+  font-size: 18px;
 }
 .check-container p {
   color: var(--Cool-gray);
@@ -546,7 +556,7 @@ main .fifth {
 main .fifth .thank-you {
   margin-bottom: 30px;
 }
-main .fifth h4 {
+main .fifth h3 {
   font-size: 32px;
   color: var(--Marine-blue);
   margin: 10px 0;
@@ -562,6 +572,8 @@ footer.attribution {
 }
 footer.attribution p {
   width: 100%;
+  bottom: 20px;
+  position: relative;
 }
 footer.attribution a {
   color: hsl(228, 45%, 44%);
