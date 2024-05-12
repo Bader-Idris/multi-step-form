@@ -1,5 +1,7 @@
 # Frontend Mentor - Multi-step form
 
+## Live version [HERE:](https://bader-idris.github.io/multi-step-form/)
+
 ![Design preview for the Multi-step form coding challenge](./design/desktop-preview.jpg)
 
 ### Fully Set Multi-Step Form
