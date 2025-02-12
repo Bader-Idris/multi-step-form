@@ -2,7 +2,7 @@
 
 ## Live version [HERE:](https://bader-idris.github.io/multi-step-form/)
 
-![Design preview for the Multi-step form coding challenge](./design/desktop-preview.jpg)
+[![Design preview for the Multi-step form coding challenge](./design/desktop-preview.jpg)](https://bader-idris.github.io/multi-step-form/)
 
 ### Fully Set Multi-Step Form
 
